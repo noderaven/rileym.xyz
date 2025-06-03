@@ -1,0 +1,146 @@
+/* Button Base */
+.btn,
+.submit-button,
+.work-link {
+  --btn-padding-x: clamp(1.25rem, 4vw, 2rem);
+  --btn-padding-y: clamp(.75rem, 2vw, 1rem);
+  --btn-font-size: clamp(.875rem, 2vw, 1rem);
+  --btn-border-radius: .5rem;
+  --btn-transition: .18s ease-in-out;
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  font-size: var(--btn-font-size);
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid transparent;
+  border-radius: var(--btn-border-radius);
+  transition: all var(--btn-transition);
+  min-height: 44px;
+  gap: .5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button Variants */
+.btn-primary,
+.submit-button {
+  background-color: var(--primary-color, #4a90e2);
+  color: var(--text-light, #ffffff);
+}
+
+.btn-primary:hover,
+.submit-button:hover {
+  background-color: var(--primary-color-dark, #357abd);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary,
+.work-link {
+  background-color: transparent;
+  border-color: var(--primary-color, #4a90e2);
+  color: var(--primary-color, #4a90e2);
+}
+
+.btn-secondary:hover,
+.work-link:hover {
+  background-color: var(--primary-color, #4a90e2);
+  color: var(--text-light, #ffffff);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Button States */
+.btn:disabled,
+.submit-button:disabled,
+.work-link:disabled {
+  opacity: .65;
+  pointer-events: none;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Loading State */
+.btn .button-loader,
+.submit-button .button-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.btn.loading,
+.submit-button.loading {
+  color: transparent;
+}
+
+.btn.loading .button-loader,
+.submit-button.loading .button-loader {
+  display: block;
+}
+
+/* Focus States */
+.btn:focus-visible,
+.submit-button:focus-visible,
+.work-link:focus-visible {
+  outline: 2px solid var(--primary-color, #4a90e2);
+  outline-offset: 2px;
+}
+
+.btn:active,
+.submit-button:active,
+.work-link:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .btn,
+  .submit-button,
+  .work-link {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+  
+  .btn-icon {
+    padding: .875rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .btn,
+  .submit-button,
+  .work-link {
+    border-width: 3px;
+  }
+  
+  .btn-secondary,
+  .work-link {
+    border-color: currentColor;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .submit-button,
+  .work-link {
+    transition: none;
+    transform: none !important;
+  }
+} 

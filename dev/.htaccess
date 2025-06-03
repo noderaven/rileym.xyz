@@ -1,0 +1,17 @@
+# Set MIME type for CSS files
+AddType text/css .css
+
+# Enable CORS for assets
+<FilesMatch "\.(css|js|woff2|woff)$">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
+# Enable compression for CSS and JS files
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/css application/javascript
+</IfModule>
+
+# Set caching headers for assets
+<FilesMatch "\.(css|js|woff2|woff)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch> 

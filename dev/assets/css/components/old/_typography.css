@@ -1,0 +1,151 @@
+/* Font Face Declarations */
+@font-face {
+  font-family: 'Hack';
+  src: local('Hack Regular'),
+       url(https://cdn.jsdelivr.net/npm/hack-font@3/build/web/fonts/hack-regular.woff2) format('woff2'),
+       url(https://cdn.jsdelivr.net/npm/hack-font@3/build/web/fonts/hack-regular.woff) format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 0;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: local('Hack Bold'),
+       url(https://cdn.jsdelivr.net/npm/hack-font@3/build/web/fonts/hack-bold.woff2) format('woff2'),
+       url(https://cdn.jsdelivr.net/npm/hack-font@3/build/web/fonts/hack-bold.woff) format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 0;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Font Loading States */
+.fonts-loading {
+  font-family: var(--hack-system);
+}
+
+.fonts-loaded {
+  font-family: var(--hack-regular);
+}
+
+.fonts-failed {
+  font-family: var(--hack-system);
+}
+
+/* Typography Base */
+html {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--hack-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Text Elements */
+.terminal-text,
+.command-line,
+.tech-item,
+.cert-verify {
+  font-family: var(--hack-regular);
+}
+
+em, i {
+  font-family: var(--hack-italic);
+  font-style: normal;
+}
+
+strong, b {
+  font-family: var(--hack-bold);
+  font-weight: 400;
+}
+
+/* Special Text Classes */
+.hero-title {
+  font-family: var(--hack-bold);
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: var(--hack-bold);
+}
+
+.lead,
+.terminal-prompt,
+.command-output,
+pre code {
+  font-family: var(--hack-regular);
+}
+
+.terminal-highlight {
+  font-family: var(--hack-bold-italic);
+}
+
+/* Navigation & Interactive Elements */
+.navbar a,
+.nav-links a,
+.skills-list li,
+.tech-stack .tech-item,
+input,
+textarea,
+button {
+  font-family: var(--hack-regular);
+}
+
+/* Quotes */
+blockquote {
+  font-family: var(--hack-italic);
+}
+
+blockquote cite {
+  font-family: var(--hack-bold-italic);
+}
+
+/* Timeline & Project Elements */
+.timeline-date {
+  font-family: var(--hack-bold);
+}
+
+.project-description,
+.footer {
+  font-family: var(--hack-regular);
+}
+
+/* Font Feature Settings */
+.font-mono {
+  font-feature-settings: "liga" 0, "calt" 1;
+  font-variant-ligatures: no-common-ligatures;
+}
+
+.font-measure {
+  max-width: 70ch;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  body {
+    font-size: var(--text-base);
+  }
+  
+  .hero-title {
+    font-size: var(--text-4xl);
+  }
+} 

@@ -1,0 +1,541 @@
+/* Terminal Container */
+.terminal-container {
+    position: relative;
+    z-index: 1;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Terminal Utility Classes */
+.terminal-marker::before {
+    content: '>';
+    color: var(--accent-color, #50fa7b);
+    opacity: 0.8;
+}
+
+.terminal-prompt {
+    color: var(--accent-color, #50fa7b);
+    opacity: 0.8;
+}
+
+/* Terminal Output */
+.terminal-output {
+    composes: card card--large;
+    position: relative;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+@supports not ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+    .terminal-output {
+        background: var(--surface-darker-solid);
+    }
+}
+
+.terminal-output::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--accent-color);
+    opacity: 0.2;
+}
+
+/* Terminal Header */
+.terminal-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm, 1rem);
+    margin-block-end: var(--space-xl, 2rem);
+    font-family: var(--font-mono);
+    padding-block-end: var(--space-md, 1.25rem);
+    border-block-end: 1px solid var(--border-color);
+}
+
+.prompt {
+    color: var(--accent-color);
+}
+
+.command {
+    color: var(--text-secondary);
+}
+
+/* Terminal Input Line */
+.terminal-input-line {
+    display: none;
+    align-items: center;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    position: relative;
+    opacity: 0;
+    will-change: transform, opacity;
+    height: 1.5rem;
+    transform: translateZ(0);
+}
+
+.terminal-prompt {
+    color: var(--accent-color, #50fa7b);
+    margin-right: 0.5rem;
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    font-size: inherit;
+    padding: 0;
+    width: calc(100% - 2.5rem);
+    caret-color: transparent;
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.input-text {
+    position: absolute;
+    left: 1.5rem;
+    color: var(--text-color);
+    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    height: 1em;
+}
+
+.terminal-input:focus {
+    outline: none;
+}
+
+/* Command Output */
+.command-output {
+    padding: 0.5rem;
+    opacity: 0;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* Terminal History */
+.terminal-history {
+    margin-top: 1rem;
+    color: var(--text-color);
+}
+
+.terminal-history-line {
+    padding: 0.2rem 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    will-change: transform, opacity;
+    transform-origin: left center;
+    transform: translateZ(0);
+}
+
+.terminal-history-line.error {
+    color: var(--error-color);
+}
+
+/* Terminal Background Effects */
+.terminal-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+    transform: translateZ(0);
+}
+
+.terminal-line {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--accent-color);
+    white-space: nowrap;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* Typewriter Cursor */
+.Typewriter__cursor {
+    display: inline-block !important;
+    color: var(--text-color);
+    animation: blink 1s step-end infinite;
+}
+
+.command-cursor {
+    display: inline-block !important;
+    color: var(--text-color);
+    animation: blink 1s step-end infinite;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.input-cursor {
+    display: inline-block !important;
+    color: var(--text-color);
+    animation: blink 1s step-end infinite;
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    z-index: 3;
+    height: 1em;
+    line-height: 1;
+    vertical-align: top;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Terminal Input Line */
+.terminal-input-line .typewriter-wrapper {
+    position: absolute;
+    left: 1.5rem;
+    display: inline-block;
+    pointer-events: none;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1em;
+    line-height: 1;
+}
+
+/* Hardware Acceleration for Animations */
+.terminal-container *,
+.terminal-output,
+.terminal-input-line,
+.command-output,
+.terminal-history-line,
+.terminal-line {
+    backface-visibility: hidden;
+}
+
+/* Ensure input cursor is visible in the terminal input line */
+.terminal-input-line .input-cursor {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+    vertical-align: top;
+}
+
+.terminal-error {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ff3333;
+    padding: 1.5rem;
+    border-radius: 4px;
+    text-align: center;
+    color: #ff3333;
+    font-family: 'Hack', monospace;
+}
+
+.terminal-error p {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+
+.terminal-error .error-details {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 1rem;
+}
+
+.terminal-error button {
+    background: #ff3333;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Hack', monospace;
+    transition: background-color 0.2s;
+}
+
+.terminal-error button:hover {
+    background: #ff6666;
+} 
+
+.terminal-marker:before {
+    content: ">";
+    color: var(--accent-color, #50fa7b);
+    opacity: 0.8;
+}
+.terminal-prompt {
+    color: var(--accent-color, #50fa7b);
+    opacity: 0.8;
+}
+.terminal-output {
+    composes: card card--large;
+    position: relative;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+@supports not ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+    .terminal-output {
+        background: var(--surface-darker-solid);
+    }
+}
+.terminal-output:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--accent-color);
+    opacity: 0.2;
+}
+.terminal-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm, 1rem);
+    margin-block-end: var(--space-xl, 2rem);
+    font-family: var(--font-mono);
+    padding-block-end: var(--space-md, 1.25rem);
+    border-block-end: 1px solid var(--border-color);
+}
+.terminal-input-line {
+    display: none;
+    align-items: center;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    position: relative;
+    opacity: 0;
+    will-change: transform, opacity;
+    height: 1.5rem;
+}
+.terminal-prompt {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+    position: absolute;
+    left: 0.5rem;
+}
+.terminal-input {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    font-size: inherit;
+    padding: 0;
+    width: calc(100% - 2rem);
+    caret-color: transparent;
+    position: absolute;
+    left: 2rem;
+    height: 100%;
+    z-index: 1;
+}
+.input-text {
+    position: absolute;
+    left: 2rem;
+    color: var(--text-color);
+    opacity: 1;
+}
+.terminal-input:focus {
+    outline: none;
+}
+.terminal-cursor {
+    display: none;
+}
+.terminal-history {
+    margin-top: 1rem;
+    color: var(--text-color);
+}
+.terminal-history-line {
+    padding: 0.2rem 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    will-change: transform, opacity;
+    transform-origin: left center;
+}
+.terminal-history-line.error {
+    color: var(--error-color);
+}
+.terminal-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+.terminal-line {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--accent-color);
+    white-space: nowrap;
+    will-change: transform, opacity;
+}
+
+/* Terminal-related code moved from main.css */
+.prompt {
+    font-family: var(--hack-regular);
+}
+
+.command {
+    font-family: var(--hack-regular);
+    color: var(--text-secondary);
+}
+
+.command-output {
+    font-family: var(--hack-regular);
+    color: var(--text-secondary);
+}
+
+.typing-text {
+    opacity: 0;
+}
+
+.typewriter-wrapper {
+    display: inline-block;
+}
+
+.terminal-cursor,
+.Typewriter__cursor {
+    display: inline-block;
+    animation: blink 0.75s step-end infinite;
+}
+
+.command-line.typing {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    opacity: 0;
+}
+
+.command-line.typing .terminal-prompt {
+    opacity: 0;
+}
+
+.command-line.typing .typing-text {
+    opacity: 0;
+}
+
+.command-line.typing .typewriter-wrapper {
+    opacity: 0;
+}
+
+.terminal-input-line .typewriter-wrapper {
+    position: absolute;
+    left: 1.5rem;
+    display: inline-block;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.terminal-input-line .Typewriter__cursor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: blink 0.75s step-end infinite;
+}
+
+.first-cursor {
+    opacity: 0;
+}
+.terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-button.close { background: #ff5f56; }
+.terminal-button.minimize { background: #ffbd2e; }
+.terminal-button.maximize { background: #27c93f; }
+
+.terminal-title {
+    color: var(--text-secondary);
+    font-family: var(--hack-regular);
+    font-size: var(--text-sm);
+    opacity: 0.7;
+}
+
+.command-line.typing {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    font-family: var(--font-mono);
+    position: relative;
+}
+.command-line.typing .terminal-prompt {
+    position: static;
+    margin-right: 0.5rem;
+}
+.command-line.typing .typing-text {
+    margin-left: 0.5rem;
+    position: relative;
+}
+.command-line.typing .typewriter-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.terminal-input-line .typewriter-wrapper {
+    position: absolute;
+    left: 2rem;
+    display: inline-block;
+    pointer-events: none;
+    z-index: 2;
+}
+.terminal-input-line .Typewriter__cursor {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block !important;
+    color: var(--text-color);
+    animation: blink 1s step-end infinite;
+    z-index: 2;
+}
+.first-cursor {
+    display: inline-block !important;
+    color: var(--text-color);
+    animation: blink 1s step-end infinite;
+}
+.terminal-cursor,
+.input-cursor,
+.input-cursor-blink {
+    display: none;
+}
+.Typewriter__cursor {
+    display: inline-block !important;
+    color: var(--text-color);
+    animation: blink 1s step-end infinite;
+}
+.typing-text {
+    display: inline-block;
+    white-space: pre;
+}
+.typewriter-wrapper {
+    display: inline-block;
+    position: relative;
+}

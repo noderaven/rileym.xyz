@@ -1,0 +1,150 @@
+:root {
+  /* Colors */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #161616;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, .7);
+  --accent-color: #FFB800;
+  --border-color: rgba(255, 255, 255, .1);
+  
+  /* Gradients */
+  --gradient-hero: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
+  --gradient-overlay: linear-gradient(rgba(0, 0, 0, .4), var(--bg-primary));
+  
+  /* Fonts */
+  --font-primary: "Hack", monospace;
+  --font-secondary: "Hack", monospace;
+  --font-mono: "Hack", monospace;
+  --font-regular: 400;
+  --font-bold: 700;
+  --font-style-normal: normal;
+  --font-style-italic: italic;
+  
+  /* Font variants */
+  --hack-regular: "Hack Regular", "Hack", monospace;
+  --hack-bold: "Hack Bold", "Hack", monospace;
+  --hack-italic: "Hack Italic", "Hack", monospace;
+  --hack-bold-italic: "Hack Bold Italic", "Hack", monospace;
+  
+  /* Breakpoints */
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
+  /* Typography Scale */
+  --text-xs: clamp(.7rem, .7rem + .1vw, .75rem);
+  --text-sm: clamp(.8125rem, .8rem + .15vw, .875rem);
+  --text-base: clamp(.9375rem, .925rem + .2vw, 1rem);
+  --text-lg: clamp(1.0625rem, 1.05rem + .25vw, 1.125rem);
+  --text-xl: clamp(1.1875rem, 1.15rem + .3vw, 1.25rem);
+  --text-2xl: clamp(1.375rem, 1.35rem + .35vw, 1.5rem);
+  --text-3xl: clamp(1.75rem, 1.7rem + .4vw, 2rem);
+  --text-4xl: clamp(2.25rem, 2.2rem + .45vw, 2.5rem);
+  --text-5xl: clamp(2.75rem, 2.7rem + .5vw, 3rem);
+  --text-6xl: clamp(3.25rem, 3.2rem + .55vw, 3.5rem);
+  
+  /* Spacing Scale */
+  --space-xs: clamp(.25rem, 1vw, .5rem);
+  --space-sm: clamp(.5rem, 2vw, 1rem);
+  --space-md: clamp(1rem, 3vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 4vw, 2rem);
+  --space-xl: clamp(2rem, 5vw, 3rem);
+  --space-2xl: clamp(3rem, 6vw, 4rem);
+  --space-3xl: clamp(4rem, 8vw, 6rem);
+  
+  /* Layout */
+  --container-width: min(1400px, 100% - (2 * var(--container-padding)));
+  --container-padding: clamp(1rem, 3vw, 2rem);
+  --section-spacing: clamp(3rem, 8vw, 6rem);
+  --grid-gap: clamp(1rem, 3vw, 2rem);
+  
+  /* Image Sizes */
+  --img-sm: clamp(200px, 40vw, 300px);
+  --img-md: clamp(300px, 50vw, 500px);
+  --img-lg: clamp(500px, 60vw, 800px);
+  
+  /* Transitions */
+  --transition-fast: .2s ease;
+  --transition-normal: .3s ease;
+  --transition-slow: .5s ease;
+  
+  /* Z-index */
+  --z-navbar: 1000;
+  --z-modal: 2000;
+  --z-tooltip: 3000;
+}
+
+/* Base Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, textarea {
+  font-family: var(--font-secondary);
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: clamp(1rem, 4vw, 1.5rem);
+    --section-spacing: clamp(2.5rem, 6vw, 4rem);
+    --grid-gap: clamp(1rem, 2.5vw, 1.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1rem;
+    --section-spacing: 2rem;
+    --grid-gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --container-padding: .75rem;
+    --section-spacing: 1.5rem;
+    --grid-gap: .75rem;
+  }
+} 

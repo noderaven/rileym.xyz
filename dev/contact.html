@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="fonts-loading">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Riley McGowen - IT Professional and Security Specialist. Get in touch for security consulting, penetration testing, and collaboration opportunities.">
+    
+    <!-- Preload Critical Fonts -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/fonts/hack-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/fonts/hack-bold.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Fallback Font CSS (loads immediately but with lower priority) -->
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
+    </noscript>
+    
+    <title>Contact - Riley McGowen</title>
+    
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main2.css">
+    <link rel="stylesheet" href="assets/css/main3.css">
+    <script type="module" src="assets/js/main.js"></script>
+    <script src="assets/js/font-loader.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Bar -->
+    <progress class="loading-bar" max="100" value="0"></progress>
+
+    <!-- Scroll Progress -->
+    <aside class="scroll-progress">
+        <progress class="scroll-progress-bar" max="100" value="0"></progress>
+    </aside>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-content">
+                <a href="/" class="logo">/home/riley/web-app/</a>
+                <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <nav class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+            <ul class="mobile-menu-links">
+                <li><a href="/about.html" aria-label="About Me section">About Me</a></li>
+                <li><a href="/projects.html" aria-label="Work section">Work</a></li>
+                <li><a href="/contact.html" aria-label="Contact section">Contact</a></li>
+            </ul>
+            <ul class="mobile-social-links" aria-label="Social media links">
+                <li><a href="https://github.com/rileymxyz" class="social-link" aria-label="GitHub Profile" rel="noopener noreferrer"><span class="fab fa-github" aria-hidden="true"></span></a></li>
+                <li><a href="https://www.linkedin.com/in/riley-mcgowen/" class="social-link" aria-label="LinkedIn Profile" rel="noopener noreferrer"><span class="fab fa-linkedin" aria-hidden="true"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main">
+        <section id="contact" class="section contact-section">
+            <div class="contact-accent-line contact-accent-line-1"></div>
+            <div class="contact-accent-line contact-accent-line-2"></div>
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Let's Work Together</h3>
+                        <p>Open to new opportunities and collaborations.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="fas fa-envelope" aria-hidden="true"></span>
+                                <span><a href="mailto:mcgowenriley@gmail.com">mcgowenriley@gmail.com</a></span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="fas fa-location-dot" aria-hidden="true"></span>
+                                <span>Seattle, WA</span>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><span class="fab fa-github" aria-hidden="true"></span></a>
+                            <a href="#" class="social-link"><span class="fab fa-linkedin" aria-hidden="true"></span></a>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contact-form" role="form" aria-label="Contact form">
+                        <div class="form-group">
+                            <label for="name" class="visually-hidden">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true">
+                            <span class="focus-border" aria-hidden="true"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="visually-hidden">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required aria-required="true">
+                            <span class="focus-border" aria-hidden="true"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="visually-hidden">Your Message</label>
+                            <textarea id="message" name="message" placeholder="Your Message" required aria-required="true"></textarea>
+                            <span class="focus-border" aria-hidden="true"></span>
+                        </div>
+                        <button type="submit" class="submit-button" aria-label="Send message">
+                            <span class="button-text">Send Message</span>
+                            <span class="button-loader" aria-hidden="true"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Riley McGowen Security LLC. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="/about.html">About</a>
+                    <a href="/projects.html">Work</a>
+                    <a href="/contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
